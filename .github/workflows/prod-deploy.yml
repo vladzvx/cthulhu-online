@@ -17,9 +17,9 @@ jobs:
         script: |
           cd /bin
           echo "${{ secrets.PROD_ENV }}"> env_file
-          sudo rm -r cthulhu-online
-          sudo git clone https://${{ secrets.GH_PWD }}@github.com/vladzvx/cthulhu-online
-          sudo chmod u+x cthulhu-online
-          sudo mv env_file cthulhu-online/.env
+          rm -r cthulhu-online
+          git clone https://${{ secrets.GH_PWD }}@github.com/vladzvx/cthulhu-online
+          chmod u+x cthulhu-online
+          mv env_file cthulhu-online/.env
           cd cthulhu-online
-          sudo docker-compose up -d --build
+          docker-compose up -d --build
