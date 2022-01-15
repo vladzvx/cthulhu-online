@@ -1,0 +1,25 @@
+name: build and deploy
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  deploy_compose:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Compose
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.PROD_HOST }}
+        username: ${{ secrets.PROD_USER }}
+        password  : ${{ secrets.PROD_PWD }}
+        port: 22
+        script: |
+          cd /bin
+          echo "${{ secrets.PROD_ENV }}"> env_file
+          sudo rm -r cthulhu-online
+          sudo git clone https://${{ secrets.GH_PWD }}@github.com/vladzvx/cthulhu-online
+          sudo chmod u+x cthulhu-online
+          sudo mv env_file cthulhu-online/.env
+          cd cthulhu-online
+          sudo docker-compose up -d --build
