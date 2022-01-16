@@ -9,7 +9,7 @@ namespace Cthulhu.TestClient
         static void Main(string[] args)
         {
             Thread.Sleep(5000);
-            DataHub.Client client = new DataHub.Client("http://localhost:5000/datahub");
+            DataHub.Client client = new DataHub.Client("https://cthulhu-online.fun:5005/datahub");
             client.StartText();
         }
     }
