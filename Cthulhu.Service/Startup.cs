@@ -1,3 +1,4 @@
+using Cthulhu.CoreLib.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,7 @@ namespace Cthulhu.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -28,6 +30,7 @@ namespace Cthulhu.Service
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<DataHub.Server>("/datahub");
                 endpoints.MapControllers();
             });
         }

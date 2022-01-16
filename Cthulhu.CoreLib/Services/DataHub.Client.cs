@@ -1,0 +1,43 @@
+﻿using Cthulhu.CoreLib.Models;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Cthulhu.CoreLib.Services
+{
+    public partial class DataHub 
+    {
+        public class Client
+        {
+            private HubConnection connection;
+
+            private void MessageHandler(Message message)
+            {
+                Console.WriteLine("{0}:{1}", message.dateTime, message.Text);
+            }
+
+            public Client(string url)
+            {
+                connection = new HubConnectionBuilder()
+                .WithUrl(url).AddJsonProtocol(options => {
+                    options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+                })
+                .Build();
+                connection.StartAsync().Wait();
+                connection.On<Message>("SendMessage", MessageHandler);
+            }
+
+            public void StartText()
+            {
+                Console.WriteLine("You can write messages here.");
+                while (true)
+                {
+                    connection.SendAsync("SendMessage", new Message() { Text = "SendMessage " + Console.ReadLine() }).Wait();
+                }
+            }
+        }
+    }
+}
