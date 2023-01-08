@@ -1,24 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cthulhu.Service.Controllers
 {
+    public class TestResponseModel
+    {
+        public string Text { get; set; } = string.Empty;
+    }
+
+    public class TestRequestModel
+    {
+        public string Text { get; set; } = string.Empty;
+    }
+
+    [Route("[controller]/[action]")]
     [ApiController]
-    [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        public TestController()
+        [HttpGet]
+        public async Task<string> GetOk()
         {
-
+            await Task.Delay(1);
+            return "ok!";
         }
 
-        [HttpPost()]
-        public async Task<string> Test()
+        [HttpPost]
+        public async Task<TestResponseModel> GetModel(TestRequestModel request)
         {
-            return "ok";
+            await Task.Delay(1);
+            return new TestResponseModel() { Text = request.Text };
         }
     }
 }

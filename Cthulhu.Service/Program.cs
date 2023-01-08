@@ -1,31 +1,22 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using Microsoft.OpenApi.Models;
 
-namespace Cthulhu.Service
+var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+
+services.AddControllers();
+services.AddSwaggerGen().AddSwaggerGenNewtonsoftSupport();
+
+services.AddEndpointsApiExplorer();
+
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+    c.ShowCommonExtensions();
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cthulhu");
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel(serverOptions =>
-                    {
-                        serverOptions.Listen(IPAddress.Any, 5000);
-                    });
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+app.MapControllers();
+
+app.Run();
