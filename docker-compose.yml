@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   cthulhu.service:
+    restart: always
     container_name : cthulhu_service
     image: cthulhu_service
     ports:
