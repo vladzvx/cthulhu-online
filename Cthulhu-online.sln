@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cthulhu.Service", "Cthulhu.Service\Cthulhu.Service.csproj", "{953B9D04-8767-46DF-9477-38D950D3EB84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cthulhu.Service", "Cthulhu.Service\Cthulhu.Service.csproj", "{953B9D04-8767-46DF-9477-38D950D3EB84}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9C40A824-3129-40DB-90EF-A8CC67DE5308}"
 EndProject
