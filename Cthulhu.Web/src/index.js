@@ -4,7 +4,8 @@ import './index.css';
 import { createStore } from 'redux';
 //const axios = require('axios');
 import axios, * as others from 'axios';
-import { Router, Route } from "react-router-dom";
+import { Router, Route, BrowserRouter, Routes} from "react-router-dom";
+
 //const store = createStore(reducer);
 //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 //axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -124,6 +125,44 @@ class Board extends React.Component {
     }
   }
   
+  class Board2 extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          squares: Array(9).fill(null),
+        };
+      }
+
+      handleClick(i) {
+        const squares = this.state.squares.slice();
+        squares[i] = 'X';
+        this.setState({squares: squares});
+      }
+
+
+      renderTest() {
+        return (
+          <TestButton
+            value="TEST"
+          />
+        );
+      }
+
+
+    render() {
+      const status = 'Next player: X';
+  
+      return (
+        <div>
+          <div className="board-row">
+            {this.renderTest()}
+          </div>
+        </div>
+      );
+    }
+  }
+
   class Game  extends React.Component{
     render() {
       return (
@@ -138,9 +177,33 @@ class Board extends React.Component {
     }
   }
 
+  class Game2  extends React.Component{
+    render() {
+      return (
+        <div className="game2">
+          <div className="game2-board">
+            <Board2 />
+          </div>
+          <div className="game2-info">
+          </div>
+        </div>
+      );
+    }
+  }
+
+  export default function App() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Game />}></Route>
+          <Route path="/t" element={<Game2 />}></Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 
   // ========================================
   
   const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(<Game />);
+  root.render(<App />);
   
