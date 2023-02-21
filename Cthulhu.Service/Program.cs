@@ -1,16 +1,19 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Cthulhu.CoreLib.Repositories;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
 services.AddControllers();
+services.AddSingleton<IPersonRepository, PersonRepository>();
 services.AddSwaggerGen().AddSwaggerGenNewtonsoftSupport();
-
 services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
 app.UseSwagger();
+app.UseRouting();
 app.UseSwaggerUI(c =>
 {
     c.ShowCommonExtensions();
@@ -18,5 +21,5 @@ app.UseSwaggerUI(c =>
 });
 
 app.MapControllers();
-
+app.UseCors(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().SetPreflightMaxAge(TimeSpan.FromSeconds(60)));
 app.Run();

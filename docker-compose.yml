@@ -11,14 +11,3 @@ services:
     build:
       context: .
       dockerfile: Cthulhu.Service/Dockerfile
-
-  cthulhu.web:
-    hostname: cthulhu_web
-    restart: always
-    container_name : cthulhu_web
-    image: cthulhu_web
-    ports:
-      - 127.0.0.1:5001:80
-    build:
-      context: Cthulhu.WebUI
-      dockerfile: Dockerfile

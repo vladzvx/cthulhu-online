@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Схема зависимостей проектов.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-2-8-8-1"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4730-3-4-7-1"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-2-8-8-1-1"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4730-3-4-7-1-0"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-957.84676"
+     inkscape:cy="956.58397"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#fcee43;fill-opacity:0.31155778;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-7"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-138.66815" />
+    <rect
+       style="opacity:1;fill:#00ff1a;fill-opacity:0.22613065;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-1-62"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-121.28127" />
+    <rect
+       style="opacity:1;fill:#00b7ff;fill-opacity:0.22613065;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-6-3"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-103.89436" />
+    <rect
+       style="opacity:1;fill:#fc6c43;fill-opacity:0.31155778;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-7-4"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-156.05505" />
+    <rect
+       style="opacity:1;fill:#0026d9;fill-opacity:0.23115581;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-1-7-4-2"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-86.507462" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13859"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-72.490879,96.833274)"><flowRegion
+         id="flowRegion13861"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13863"
+           width="324.88651"
+           height="186.40701"
+           x="-1508.5714"
+           y="-877.48029"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13865"
+         style="font-size:24px;text-align:center;text-anchor:middle">Основные библиотеки</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13875"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-85.724779,79.102264)"><flowRegion
+         id="flowRegion13877"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13879"
+           width="321.22852"
+           height="114.14724"
+           x="-1456.64"
+           y="-754.34375"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13881"
+         style="font-size:24px">Вспомогательные</flowPara><flowPara
+         id="flowPara13883"
+         style="font-size:24px">библиотеки для тестов</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13993"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-172.29452,100.37005)"><flowRegion
+         id="flowRegion13995"><rect
+           id="rect13997"
+           width="220.367"
+           height="168.235"
+           x="-1078.8429"
+           y="-752.32343" /></flowRegion><flowPara
+         id="flowPara13999"
+         style="font-size:24px;text-align:center;text-anchor:middle">Unit - тесты</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot14001"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-159.94316,113.64663)"><flowRegion
+         id="flowRegion14003"><rect
+           id="rect14005"
+           width="375.57578"
+           height="155.71429"
+           x="-1204.2858"
+           y="-751.76605" /></flowRegion><flowPara
+         id="flowPara14007"
+         style="font-size:24px;text-align:center;text-anchor:middle">Функциональные/интеграционные</flowPara><flowPara
+         id="flowPara14009"
+         style="font-size:24px;text-align:center;text-anchor:middle">тесты</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13859-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-72.490849,79.446374)"><flowRegion
+         id="flowRegion13861-9"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13863-6"
+           width="324.88651"
+           height="186.40701"
+           x="-1508.5714"
+           y="-877.48029"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13865-7"
+         style="font-size:24px;text-align:center;text-anchor:middle">Веб-сервисы</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#575643;fill-opacity:0.31155778;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-7-6"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-69.12056" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13859-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-72.490909,166.38087)"><flowRegion
+         id="flowRegion13861-5"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13863-3"
+           width="324.88651"
+           height="186.40701"
+           x="-1508.5714"
+           y="-877.48029"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13865-8"
+         style="font-size:24px;text-align:center;text-anchor:middle">NuGet пакеты</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#a05a2c;fill-opacity:0.41206031;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-7-6-9"
+       width="101.6756"
+       height="17.386904"
+       x="-479.4628"
+       y="-51.733658" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13859-3-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-77.225279,183.13058)"><flowRegion
+         id="flowRegion13861-5-9"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13863-3-9"
+           width="361.31503"
+           height="186.40704"
+           x="-1508.5714"
+           y="-877.48029"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13865-8-5"
+         style="font-size:24px;text-align:center;text-anchor:middle">NuGet пакеты, публикуемые ЭМК</flowPara></flowRoot>    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path8838-9"
+       d="m -476.03811,1.3266242 h 31.6615"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.00000004, 2.00000004;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-8-8-1)"
+       d="m -447.00381,-20.029046 h -29.71792"
+       id="path4707-8-9-7-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot11244"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,370.7355,61.032134)"><flowRegion
+         id="flowRegion11246"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect11248"
+           width="427.14285"
+           height="262.85715"
+           x="-3190"
+           y="-263.19458"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara11250">Публикация</flowPara><flowPara
+         id="flowPara11368">NuGet пакета</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot11252"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,266.79203,60.022954)"><flowRegion
+         id="flowRegion11254"><rect
+           id="rect11256"
+           width="515.71429"
+           height="321.42856"
+           x="-2661.4285"
+           y="-320.33743" /></flowRegion><flowPara
+         id="flowPara11258">Ссылка</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#fcee43;fill-opacity:0.31155778;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-7-68"
+       width="101.6756"
+       height="17.386904"
+       x="-228.10863"
+       y="-82.488098" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13859-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,178.86329,153.01334)"><flowRegion
+         id="flowRegion13861-0"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13863-5"
+           width="324.88651"
+           height="186.40701"
+           x="-1508.5714"
+           y="-877.48029"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13865-3"
+         style="font-size:24px;text-align:center;text-anchor:middle">Cthulhi.CoreLib</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#fc6c43;fill-opacity:0.31155778;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-7-4-4"
+       width="101.6756"
+       height="17.386904"
+       x="-227.23569"
+       y="-39.900433" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot13859-1-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,179.73627,195.601)"><flowRegion
+         id="flowRegion13861-9-8"
+         style="text-align:center;text-anchor:middle"><rect
+           id="rect13863-6-6"
+           width="324.88651"
+           height="186.40701"
+           x="-1508.5714"
+           y="-877.48029"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara13865-7-6"
+         style="font-size:24px;text-align:center;text-anchor:middle">Cthulhu.Service</flowPara></flowRoot>    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-8-8-1-1)"
+       d="m -179.093,-40.069795 -1.36971,-24.379465"
+       id="path4707-8-9-7-3-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

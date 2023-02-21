@@ -16,4 +16,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cthulhu.CoreLib\Cthulhu.CoreLib.csproj" />
+  </ItemGroup>
+
 </Project>
