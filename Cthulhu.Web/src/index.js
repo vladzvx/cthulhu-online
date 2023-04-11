@@ -7,6 +7,8 @@ import axios, * as others from 'axios';
 import { Router, Route, BrowserRouter, Routes} from "react-router-dom";
 import { DataGrid, GridRowsProp, GridColDef, } from '@mui/x-data-grid';
 import { Grid } from '@mui/material';
+import { TextField } from '@mui/material';
+import { useMediaQuery, MediaQuery  } from 'react-responsive'
 
 //const store = createStore(reducer);
 //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -207,7 +209,7 @@ class Board extends React.Component {
           />
             </Grid>
             <Grid item xs={3}>
-            {3}
+            {<TextField  type="number"   defaultValue="55"/>}
             </Grid>
             <Grid item xs={9}>
             <PersonView/>
@@ -217,6 +219,32 @@ class Board extends React.Component {
       );
     }
   }
+
+  class TableViewMobile extends React.Component{
+    render(){
+      return (
+        <div style={{ height: '100%', width: '100%' }}>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid item xs={12}>
+              {"Фамилия"}
+            </Grid>
+            <Grid item xs={12}>
+            <TestButton
+            value="TEST"
+          />
+            </Grid>
+            <Grid item xs={12}>
+            {<TextField  type="number"   defaultValue="55"/>}
+            </Grid>
+            <Grid item xs={12}>
+            <PersonView/>
+            </Grid>
+          </Grid>
+      </div>
+      );
+    }
+  }
+
   class PersonView extends React.Component{
     render() {
       return (
@@ -230,13 +258,13 @@ class Board extends React.Component {
   }
 
   const rows = [
-    { id: 1, col1: 'Hello', col2: 'World' },
+    { id: 1, col1: "111", col2: 'World' },
     { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
     { id: 3, col1: 'MUI', col2: 'is Amazing' },
   ];
 
   const columns = [
-    { field: 'col1', headerName: 'Column 1', width: 150,renderHeader:()=>null,  sortable: false, editable: true},
+    { field: 'col1', headerName: 'Column 1', width: 150,renderHeader:()=>null,  sortable: false,  renderCell:()=><TextField  type="number" defaultValue="0"/>},
     { field: 'col2', headerName: 'Column 2', width: 150 , renderHeader: () => null, sortable: false 
     },
   ];
@@ -255,20 +283,27 @@ class Board extends React.Component {
 }; 
 
   export default function App() {
+
+
+
+
+    //const isTabletOrMobile1 = useMediaQuery({ query: '(max-width: 1224px)' })
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<TableView />}></Route>
-          <Route path="/t3" element={<PersonView />}></Route>
-          <Route path="/t" element={<Game2 />}></Route>
-          <Route path="/t2" element={<Game />}></Route>
-        </Routes>
-      </BrowserRouter>
+     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TableViewMobile />}></Route>
+        <Route path="/t3" element={<PersonView />}></Route>
+        <Route path="/t" element={<Game2 />}></Route>
+        <Route path="/t2" element={<Game />}></Route>
+      </Routes>
+    </BrowserRouter>
+
     );
   }
 
+ 
   // ========================================
   
   const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(<App />);
+  root.render(App());
   
