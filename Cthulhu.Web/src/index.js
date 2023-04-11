@@ -236,7 +236,7 @@ class Board extends React.Component {
   ];
 
   const columns = [
-    { field: 'col1', headerName: 'Column 1', width: 150,renderHeader:()=>null,  sortable: false  },
+    { field: 'col1', headerName: 'Column 1', width: 150,renderHeader:()=>null,  sortable: false, editable: true},
     { field: 'col2', headerName: 'Column 2', width: 150 , renderHeader: () => null, sortable: false 
     },
   ];
@@ -248,6 +248,7 @@ class Board extends React.Component {
     sort: false,
     selectableRows: false,
     print: false,
+    
     viewColumns: true,
     searchOpen: false,
     search: false,
