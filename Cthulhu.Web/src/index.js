@@ -5,7 +5,8 @@ import { createStore } from 'redux';
 //const axios = require('axios');
 import axios, * as others from 'axios';
 import { Router, Route, BrowserRouter, Routes} from "react-router-dom";
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridRowsProp, GridColDef, } from '@mui/x-data-grid';
+import { Grid } from '@mui/material';
 
 //const store = createStore(reducer);
 //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -192,11 +193,37 @@ class Board extends React.Component {
     }
   }
 
+  class TableView extends React.Component{
+    render(){
+      return (
+        <div style={{ height: '100%', width: '100%' }}>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid item xs={12}>
+              {"Фамилия"}
+            </Grid>
+            <Grid item xs={12}>
+            <TestButton
+            value="TEST"
+          />
+            </Grid>
+            <Grid item xs={3}>
+            {3}
+            </Grid>
+            <Grid item xs={9}>
+            <PersonView/>
+            </Grid>
+          </Grid>
+      </div>
+      );
+    }
+  }
   class PersonView extends React.Component{
     render() {
       return (
         <div style={{ height: 300, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} />
+        <DataGrid rows={rows} columns={columns} hideFooterPagination = {true} options={options}  disableColumnMenu = {true}
+          sx={{ border: 1 ,grid: 3 }}
+    />
       </div>
       );
     }
@@ -209,15 +236,29 @@ class Board extends React.Component {
   ];
 
   const columns = [
-    { field: 'col1', headerName: 'Column 1', width: 150 },
-    { field: 'col2', headerName: 'Column 2', width: 150 },
+    { field: 'col1', headerName: 'Column 1', width: 150,renderHeader:()=>null,  sortable: false  },
+    { field: 'col2', headerName: 'Column 2', width: 150 , renderHeader: () => null, sortable: false 
+    },
   ];
+
+  const options = {
+    filter: false,
+    responsive: "scroll",
+    download: true,
+    sort: false,
+    selectableRows: false,
+    print: false,
+    viewColumns: true,
+    searchOpen: false,
+    search: false,
+}; 
 
   export default function App() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PersonView />}></Route>
+          <Route path="/" element={<TableView />}></Route>
+          <Route path="/t3" element={<PersonView />}></Route>
           <Route path="/t" element={<Game2 />}></Route>
           <Route path="/t2" element={<Game />}></Route>
         </Routes>
