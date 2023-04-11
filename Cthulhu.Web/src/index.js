@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 //const axios = require('axios');
 import axios, * as others from 'axios';
 import { Router, Route, BrowserRouter, Routes} from "react-router-dom";
+import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 
 //const store = createStore(reducer);
 //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -191,12 +192,34 @@ class Board extends React.Component {
     }
   }
 
+  class PersonView extends React.Component{
+    render() {
+      return (
+        <div style={{ height: 300, width: '100%' }}>
+        <DataGrid rows={rows} columns={columns} />
+      </div>
+      );
+    }
+  }
+
+  const rows = [
+    { id: 1, col1: 'Hello', col2: 'World' },
+    { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
+    { id: 3, col1: 'MUI', col2: 'is Amazing' },
+  ];
+
+  const columns = [
+    { field: 'col1', headerName: 'Column 1', width: 150 },
+    { field: 'col2', headerName: 'Column 2', width: 150 },
+  ];
+
   export default function App() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Game />}></Route>
+          <Route path="/" element={<PersonView />}></Route>
           <Route path="/t" element={<Game2 />}></Route>
+          <Route path="/t2" element={<Game />}></Route>
         </Routes>
       </BrowserRouter>
     );
