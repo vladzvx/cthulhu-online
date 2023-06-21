@@ -4,10 +4,22 @@ services:
   cthulhu.service:
     hostname: cthulhu_service
     restart: always
-    container_name : cthulhu_service
+    container_name : Cthulhu.Service
     image: cthulhu_service
     ports:
       - 127.0.0.1:5000:80
     build:
       context: .
       dockerfile: Cthulhu.Service/Dockerfile
+    environment:
+      PostgreSqlConnectionString: ${PostgreSqlConnectionString}
+      MongoDbConnectionString: ${PostgreSqlConnectionString}
+
+  cthulhu.mongo:
+    ports:
+      - 127.0.0.1:5027:27017
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${MongoDbPwd}

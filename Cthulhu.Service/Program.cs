@@ -1,12 +1,11 @@
-﻿using Cthulhu.CoreLib.Repositories;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
 services.AddControllers();
-services.AddSingleton<IPersonRepository, PersonRepository>();
+
 services.AddSwaggerGen().AddSwaggerGenNewtonsoftSupport();
 services.AddEndpointsApiExplorer();
 
