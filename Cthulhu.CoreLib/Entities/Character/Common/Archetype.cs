@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Cthulhu.CoreLib.Entities.Character.Stats;
+using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Text;
 
 namespace Cthulhu.CoreLib.Entities.Character.Common
@@ -7,15 +9,17 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
     /// <summary>
     /// Тип персонажа
     /// </summary>
-    public class Archetype
+    public partial class Archetype
     {
-        public long ArchetypeId { get; set; }
-        public string Name { get; set; } = string.Empty;
-
-        public static Archetype Default = new Archetype()
-        {
-            ArchetypeId = 0,
-            Name = "Хобо"
-        };
+        public long ArchetypeId { get; private set; }
+        public int InvestigationProfessionalStatsCount { get; private set; }
+        public int CommonProfessionalStatsCount { get; private set; }
+        public int TotalProfessionalStatsCount { get; private set; }
+        public double MinStatusValue { get; private set; }
+        public double MaxStatusValue { get; private set; }
+        public string Name { get; private set; } = string.Empty;
+        public string Description { get; private set; } = string.Empty;
+        public ImmutableDictionary<long, Stat> ProfessionalStats { get; private set; } = Stat.EmptyDict;
     }
+
 }

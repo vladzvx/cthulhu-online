@@ -18,13 +18,13 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         /// </summary>
         Common = 1,
         /// <summary>
-        /// Межличностные
-        /// </summary>
-        Social = 2,
-        /// <summary>
         /// Научные
         /// </summary>
-        Scientific = 3,
+        Scientific = 2,
+        /// <summary>
+        /// Межличностные
+        /// </summary>
+        Social = 3,
         /// <summary>
         /// Прикладные
         /// </summary>

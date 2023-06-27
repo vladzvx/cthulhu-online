@@ -5,14 +5,11 @@ using System.Text;
 
 namespace Cthulhu.CoreLib.Entities.Character.Stats
 {
-    public class StatValue
+    public class StatValue : Stat
     {
-        public long StatId { get; set; }
         public double MaxValue { get; set; }
         public double CurrentValue { get; set; }
         public bool IsProfessional { get; set; }
-        public StatType Type { get; set; }
-        public StatRestoringSpec RestoringSpec { get; set; }
 
         public void NormalizeValues()
         {
@@ -25,6 +22,17 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         {
             CurrentValue += Math.Ceiling((MaxValue - CurrentValue) / (int)restorationMod);
             NormalizeValues();
+        }
+
+        public StatValue(Stat stat, bool isProfessional = false)
+        {
+            MaxValue = 0;
+            CurrentValue = 0;
+            IsProfessional = isProfessional;
+            StatId = stat.StatId;
+            Type = stat.Type;
+            RestoringSpec = stat.RestoringSpec;
+            Name = stat.Name;
         }
     }
 }

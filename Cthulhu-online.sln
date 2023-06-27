@@ -9,7 +9,9 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cthulhu.CoreLib", "Cthulhu.CoreLib\Cthulhu.CoreLib.csproj", "{20535D12-936A-49B8-BFA9-1EE41816C858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cthulhu.DataGenerator", "Cthulhu.DataGenerator\Cthulhu.DataGenerator.csproj", "{93659A44-3C8B-4736-93C6-22735B587195}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cthulhu.DataGenerator", "Cthulhu.DataGenerator\Cthulhu.DataGenerator.csproj", "{93659A44-3C8B-4736-93C6-22735B587195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cthulhu.CoreLib.Tests", "Cthulhu.CoreLib.Tests\Cthulhu.CoreLib.Tests.csproj", "{885945B2-34FA-4730-B798-D7A123359650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{93659A44-3C8B-4736-93C6-22735B587195}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93659A44-3C8B-4736-93C6-22735B587195}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93659A44-3C8B-4736-93C6-22735B587195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885945B2-34FA-4730-B798-D7A123359650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885945B2-34FA-4730-B798-D7A123359650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885945B2-34FA-4730-B798-D7A123359650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885945B2-34FA-4730-B798-D7A123359650}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,7 +8,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
     {
         Unspec = 0,
         Never = 1,
-        BetweenGame = 2,
+        BetweenGames = 2,
         Nightly = 3,
     }
 }

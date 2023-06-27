@@ -50,9 +50,10 @@ namespace Cthulhu.CoreLib.Entities.Character
         public double Defence { get; set; } = 4;
         public double Armor { get; set; } = 0;
 
-        public StatValue Sanity { get; set; } = new StatValue();
-        public StatValue Health { get; set; } = new StatValue();
-        public StatValue Composure { get; set; } = new StatValue();
+        public StatValue Sanity => CommonStats[Stat.Common.Sanity.StatId];
+        public StatValue Health => CommonStats[Stat.Common.Health.StatId];
+        public StatValue Composure => CommonStats[Stat.Common.Composure.StatId];
+
         public ConcurrentDictionary<long, StatValue> CommonStats { get; set; } = new ConcurrentDictionary<long, StatValue>();
         public ConcurrentDictionary<long, StatValue> InvestigationStats { get; set; } = new ConcurrentDictionary<long, StatValue>();
         public ConcurrentDictionary<long, StatValue> AllStats { get; set; } = new ConcurrentDictionary<long, StatValue>();
