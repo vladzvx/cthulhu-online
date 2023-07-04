@@ -12,9 +12,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
     public partial class Archetype
     {
         public long ArchetypeId { get; private set; }
-        public int InvestigationProfessionalStatsCount { get; private set; }
-        public int CommonProfessionalStatsCount { get; private set; }
-        public int TotalProfessionalStatsCount { get; private set; }
         public double MinStatusValue { get; private set; }
         public double MaxStatusValue { get; private set; }
         public string Name { get; private set; } = string.Empty;

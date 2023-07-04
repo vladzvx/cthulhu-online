@@ -7,7 +7,15 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         public static class Social
         {
             #region Private
-            private static Stat _bureaucracy = new Stat()
+            private readonly static Stat _any = new Stat()
+            {
+                Name = "Любая межличностная способность",
+                StatId = 69,
+                RestoringSpec = StatRestoringSpec.Unspec,
+                Type = StatType.Social,
+            };
+
+            private readonly static Stat _bureaucracy = new Stat()
             {
                 Name = "Бюрократия",
                 StatId = 43,
@@ -15,7 +23,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _interrogation = new Stat()
+            private readonly static Stat _interrogation = new Stat()
             {
                 Name = "Допрос",
                 StatId = 44,
@@ -23,7 +31,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _intimidation = new Stat()
+            private readonly static Stat _intimidation = new Stat()
             {
                 Name = "Запугивание",
                 StatId = 45,
@@ -31,7 +39,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _talking = new Stat()
+            private readonly static Stat _talking = new Stat()
             {
                 Name = "Изустная история",
                 StatId = 46,
@@ -39,7 +47,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _charm = new Stat()
+            private readonly static Stat _charm = new Stat()
             {
                 Name = "Лесть",
                 StatId = 47,
@@ -47,7 +55,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _policeSpeaking = new Stat()
+            private readonly static Stat _policeSpeaking = new Stat()
             {
                 Name = "Полицейский жаргон",
                 StatId = 48,
@@ -55,7 +63,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _insight = new Stat()
+            private readonly static Stat _insight = new Stat()
             {
                 Name = "Проницательность",
                 StatId = 49,
@@ -63,7 +71,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _status = new Stat()
+            private readonly static Stat _status = new Stat()
             {
                 Name = "Статус",
                 StatId = 50,
@@ -71,7 +79,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _trading = new Stat()
+            private readonly static Stat _trading = new Stat()
             {
                 Name = "Торговля",
                 StatId = 51,
@@ -79,7 +87,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _crimeSpeaking = new Stat()
+            private readonly static Stat _crimeSpeaking = new Stat()
             {
                 Name = "Уличное чутье",
                 StatId = 52,
@@ -87,7 +95,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
-            private static Stat _calming = new Stat()
+            private readonly static Stat _calming = new Stat()
             {
                 Name = "Успокаивание",
                 StatId = 53,
@@ -98,6 +106,11 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             #endregion
 
             #region Public
+            /// <summary>
+            /// Любая межличностная способность
+            /// </summary>
+            public static Stat Any => _any;
+
             /// <summary>
             /// Бюрократия
             /// </summary>

@@ -23,7 +23,7 @@ namespace Cthulhu.CoreLib.Entities.Character
         /// <summary>
         /// Архетип (хобо, дилетант и т.д.)
         /// </summary>
-        public Archetype Archetype { get; set; } = Archetype.Default;
+        public Archetype Archetype { get; set; } = Archetype.Instances.Vagabond;
 
         /// <summary>
         /// Мотив (любоптство и т.д.)
@@ -148,8 +148,8 @@ namespace Cthulhu.CoreLib.Entities.Character
                 if (!statValue.IsProfessional)
                 {
                     statValue.IsProfessional = true;
-                    statValue.MaxValue = statValue.MaxValue * 2;
-                    statValue.CurrentValue = statValue.CurrentValue * 2;
+                    statValue.MaxValue *= 2;
+                    statValue.CurrentValue *= 2;
                 }
             }
         }

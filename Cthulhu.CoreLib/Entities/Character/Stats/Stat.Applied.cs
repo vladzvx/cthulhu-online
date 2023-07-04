@@ -4,8 +4,40 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
 {
     public partial class Stat
     {
+        private readonly static Stat _any = new Stat()
+        {
+            Name = "Любая способность",
+            StatId = 64,
+            RestoringSpec = StatRestoringSpec.Unspec,
+            Type = StatType.Unspec,
+        };
+
+        private readonly static Stat _anyInvestigate = new Stat()
+        {
+            Name = "Любая исследовательская",
+            StatId = 66,
+            RestoringSpec = StatRestoringSpec.Unspec,
+            Type = StatType.Unspec,
+        };
+
+
+        public static Stat Any => _any;
+        public static Stat AnyInvestigate => _anyInvestigate;
+
+
+        /// <summary>
+        /// Прикладные способности
+        /// </summary>
         public static class Applied
         {
+            private readonly static Stat _any = new Stat()
+            {
+                Name = "Любая прикладная способность",
+                StatId = 67,
+                RestoringSpec = StatRestoringSpec.BetweenGames,
+                Type = StatType.Applied,
+            };
+
             private readonly static Stat _astronomy = new Stat()
             {
                 Name = "Астрономия",
@@ -38,10 +70,18 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Applied,
             };
 
+            private readonly static Stat _art = new Stat()
+            {
+                Name = "Искусство",
+                StatId = 58,
+                RestoringSpec = StatRestoringSpec.BetweenGames,
+                Type = StatType.Applied,
+            };
+
             private readonly static Stat _evidenceCollection = new Stat()
             {
                 Name = "Сбор улик",
-                StatId = 58,
+                StatId = 59,
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
@@ -49,7 +89,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             private readonly static Stat _forensics = new Stat()
             {
                 Name = "Судмедэкспертиза",
-                StatId = 59,
+                StatId = 60,
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
@@ -57,7 +97,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             private readonly static Stat _pharm = new Stat()
             {
                 Name = "Фармацевтика",
-                StatId = 60,
+                StatId = 61,
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
@@ -65,7 +105,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             private readonly static Stat _photography = new Stat()
             {
                 Name = "Фотография",
-                StatId = 61,
+                StatId = 62,
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
@@ -73,10 +113,15 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             private readonly static Stat _chemistry = new Stat()
             {
                 Name = "Химия",
-                StatId = 62,
+                StatId = 63,
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
+            
+            /// <summary>
+            /// Любая прикладная способность
+            /// </summary>
+            public static Stat Any => _any;
 
             /// <summary>
             /// Астрономия
@@ -114,6 +159,11 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             /// Химия
             /// </summary>
             public static Stat Chemistry => _chemistry;
+
+            /// <summary>
+            /// Искусство
+            /// </summary>
+            public static Stat Art => _art;
         }
     }
 

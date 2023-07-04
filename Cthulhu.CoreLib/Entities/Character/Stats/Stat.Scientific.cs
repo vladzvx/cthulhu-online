@@ -7,6 +7,14 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         public static class Scientific
         {
             #region Private
+            private readonly static Stat _any = new Stat()
+            {
+                Name = "Любая научная способность",
+                StatId = 68,
+                RestoringSpec = StatRestoringSpec.Unspec,
+                Type = StatType.Scientific,
+            };
+
             private readonly static Stat _anthropology = new Stat()
             {
                 Name = "Антропология",
@@ -145,6 +153,11 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             #endregion
 
             #region Public
+            /// <summary>
+            /// Любая научная способность
+            /// </summary>
+            public static Stat Any => _any;
+
             /// <summary>
             /// Антропология
             /// </summary>

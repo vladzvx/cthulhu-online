@@ -29,5 +29,9 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         /// Прикладные
         /// </summary>
         Applied = 4,
+        /// <summary>
+        /// Выбор одной из способностей
+        /// </summary>
+        OneOf = 5
     }
 }

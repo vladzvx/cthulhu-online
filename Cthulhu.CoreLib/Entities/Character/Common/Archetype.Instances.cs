@@ -17,8 +17,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
             {
                 ArchetypeId = 1,
                 Name = "Хобо",
-                CommonProfessionalStatsCount = 4,
-                InvestigationProfessionalStatsCount = 3,
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Common.Athletics ,
@@ -39,9 +37,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Антиквар",
                 MinStatusValue = 2,
                 MaxStatusValue = 5,
-                CommonProfessionalStatsCount = 0,
-                InvestigationProfessionalStatsCount = 8,
-                TotalProfessionalStatsCount = 8,
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Scientific.Architecture ,
@@ -51,6 +46,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                     Stat.Scientific.ForeignLanguages ,
                     Stat.Scientific.Juridical ,
                     Stat.Scientific.Reading ,
+                    Stat.AnyInvestigate,
                 }.ToImmutableDictionary(s => s.StatId, s => s),
                 Description = "Это не только профессия, но и состояние души: вы цените прошлое и находите себя, погружаясь в него с головой. Вы можете владеть скромной лавкой, быть штатным специалистом в местном музее или картинной галерее либо же просто увлекаться антиквариатом, древними книгами и произведениями искусства давно минувших дней."
             };
@@ -61,9 +57,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Археолог",
                 MinStatusValue = 4,
                 MaxStatusValue = 5,
-                CommonProfessionalStatsCount = 3,
-                InvestigationProfessionalStatsCount = 7,
-                TotalProfessionalStatsCount = 10,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Scientific.Archaeology ,
@@ -74,6 +68,8 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                     Stat.Scientific.ForeignLanguages ,
                     Stat.Scientific.Reading ,
                     Stat.Common.Riding ,
+                    Stat.AnyInvestigate,
+                    Stat.AnyInvestigate,
  
                 }.ToImmutableDictionary(s => s.StatId, s => s),
                 Description = "Раскапывая прошлое, вы путешествуете по далёким и загадочным местам. Вы можете быть старательным учёным, работающим в библиотеках и посвятившим свою жизнь поиску одной конкретной реликвии, или же немногим отличаться от расхитителей гробниц, охотясь за трофеями с кнутом и пистолетом наперевес. Быть может, расходы на ваши экспедиции покрывают продажи тех же самых сокровищ, либо ваши исследования финансируются университетами и заинтересованными организациями."
@@ -85,9 +81,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Военный",
                 MinStatusValue = 2,
                 MaxStatusValue = 4,
-                CommonProfessionalStatsCount = 7,
-                InvestigationProfessionalStatsCount = 2,
-                TotalProfessionalStatsCount = 9,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Common.Athletics ,
@@ -110,9 +104,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Военный врач",
                 MinStatusValue = 2,
                 MaxStatusValue = 5,
-                CommonProfessionalStatsCount = 5,
-                InvestigationProfessionalStatsCount = 4,
-                TotalProfessionalStatsCount = 9,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Common.Athletics ,
@@ -135,9 +127,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Военный инженер/артиллерист",
                 MinStatusValue = 2,
                 MaxStatusValue = 4,
-                CommonProfessionalStatsCount = 7,
-                InvestigationProfessionalStatsCount = 2,
-                TotalProfessionalStatsCount = 9,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Common.Athletics ,
@@ -160,9 +150,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Военный моряк",
                 MinStatusValue = 2,
                 MaxStatusValue = 4,
-                CommonProfessionalStatsCount = 6,
-                InvestigationProfessionalStatsCount = 3,
-                TotalProfessionalStatsCount = 9,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Common.Athletics ,
@@ -185,9 +173,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Военный (офицер)",
                 MinStatusValue = 2,
                 MaxStatusValue = 5,
-                CommonProfessionalStatsCount = 5,
-                InvestigationProfessionalStatsCount = 4,
-                TotalProfessionalStatsCount = 9,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Common.Athletics ,
@@ -199,7 +185,10 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
 
                     Stat.Social.Bureaucracy ,
                     Stat.Social.Calming ,
-                    Stat.Common.Riding ,
+                    Stat.GetOneOf(
+                        Stat.Common.Riding,
+                        Stat.Common.ExtrimDriving
+                        ) ,
                 }.ToImmutableDictionary(s => s.StatId, s => s),
                 Description = "Вы защищаете других от опасности ради славы, страны, друзей, денег или просто потому, что больше ничего не остаётся. Ваша жизнь полна рутины и зубрёжки, скуки и бюрократии, пыли и грязи. А иногда, разумеется, смерти, ужасов, крови и безумия."
             };
@@ -210,15 +199,17 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Дилетант",
                 MinStatusValue = 3,
                 MaxStatusValue = 7,
-                CommonProfessionalStatsCount = 1,
-                InvestigationProfessionalStatsCount = 2,
-                TotalProfessionalStatsCount = 8,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Social.Status,
                     Stat.Social.Charm,
-                    Stat.Common.Riding ,
-
+                    Stat.Common.Riding,
+                    Stat.Any,
+                    Stat.Any,
+                    Stat.Any,
+                    Stat.Any,
+                    Stat.Any,
                 }.ToImmutableDictionary(s => s.StatId, s => s),
                 Description = "Вы ни в чём себе не отказываете, проматывая нажитое честным трудом состояние, наследство родственников или ещё какой-то внушительный капитал. Не будучи связаны никакими обязательствами ни с работодателем, ни с подчинёнными, вы можете посвящать свою жизнь любым целям, каким только пожелаете."
             };
@@ -229,9 +220,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Доктор",
                 MinStatusValue = 4,
                 MaxStatusValue = 6,
-                CommonProfessionalStatsCount = 1,
-                InvestigationProfessionalStatsCount = 8,
-                TotalProfessionalStatsCount = 9,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Scientific.Bookkeeping,
@@ -253,9 +242,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Журналист",
                 MinStatusValue = 2,
                 MaxStatusValue = 4,
-                CommonProfessionalStatsCount = 2,
-                InvestigationProfessionalStatsCount = 8,
-                TotalProfessionalStatsCount = 10,
+
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Social.PoliceSpeaking,
@@ -267,6 +254,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                     Stat.Common.Watching,
                     Stat.Applied.EvidenceCollection,
                     Stat.Applied.Photography,
+                    Stat.Social.Any,
                 }.ToImmutableDictionary(s => s.StatId, s => s),
                 Description = "Публикуясь в газетах и журналах или выходя в радиоэфир, вы раскрываете народу глаза на окружающий мир и связываете разрозненные факты в цельные истории. Вы можете попытаться остаться в стороне от собственных репортажей, чтобы не окунаться в мир коррупции и эгоизма, но не будет ли это предательством самого себя?"
             };
@@ -277,9 +265,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Лётчик",
                 MinStatusValue = 2,
                 MaxStatusValue = 3,
-                CommonProfessionalStatsCount = 5,
-                InvestigationProfessionalStatsCount = 1,
-                TotalProfessionalStatsCount = 6,
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Applied.Astronomy,
@@ -298,9 +283,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                 Name = "Парапсихолог",
                 MinStatusValue = 2,
                 MaxStatusValue = 3,
-                CommonProfessionalStatsCount = 3,
-                InvestigationProfessionalStatsCount = 5,
-                TotalProfessionalStatsCount = 8,
                 ProfessionalStats = new List<Stat>()
                 {
                     Stat.Scientific.Anthropology,
@@ -313,6 +295,257 @@ namespace Cthulhu.CoreLib.Entities.Character.Common
                     Stat.Common.Vigilance,
                 }.ToImmutableDictionary(s => s.StatId, s => s),
                 Description = "Видные учёные смотрят на вас искоса, в то время как ревностные приверженцы теорий о сверхъестественном сомневаются в искренности ваших взглядов. Вы ходите (иногда, возможно, теряя равновесие) по грани между логикой и суеверием, между верой и фактами. Вам кажется, что при помощи научного метода можно постигнуть истину теологии, а сверхъестественное — всего лишь естественное, которое ещё не удалось изучить."
+            };
+
+            public readonly static Archetype Writer = new Archetype()
+            {
+                ArchetypeId = 13,
+                Name = "Писатель",
+                MinStatusValue = 1,
+                MaxStatusValue = 3,
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Scientific.ArtsHistory,
+                    Stat.Scientific.ForeignLanguages,
+                    Stat.Scientific.Reading,
+                    Stat.Applied.Art,
+                    Stat.Social.Insight,
+                    Stat.Social.Talking,
+                    Stat.Social.Any,
+                    Stat.Social.Any,
+                    Stat.Social.Any,
+
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Вы используете слова, чтобы переносить на бумагу окружающий мир, срывать покровы с истины или продавать свои фантазии обедневшим от Депрессии читателям. Возможно, — для всего перечисленного выше. Вы работаете в одиночку и получаете жалкие центы. Нередко вам приходится ломать голову над финалом рассказа лишь для того, чтобы не умереть с голоду на следующей неделе. Однако обладая хотя бы толикой таланта и разумно распоряжаясь своим временем, даже последний писатель десятицентовых романов сможет держать голову над водой."
+            };
+
+            public readonly static Archetype Policeman = new Archetype()
+            {
+                ArchetypeId = 14,
+                Name = "Полицейский детектив",
+                MinStatusValue = 3,
+                MaxStatusValue = 4,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Common.Vigilance,
+                    Stat.Common.Athletics,
+                    Stat.Common.Driving,
+                    Stat.Common.Shooting,
+                    Stat.Social.Interrogation,
+                    Stat.Applied.EvidenceCollection,
+                    Stat.Social.PoliceSpeaking,
+                    Stat.Scientific.Juridical,
+                    Stat.Social.Insight,
+
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Вы живёте по закону копа — тому, что вам вбили в голову в академии, или тому, которому вы научились во время пешего патрулирования злачных районов. Вы проводите черту между полицией, преступниками и гражданскими, и лучше бы никому не пересекать её. Когда закон и правосудие расходятся во мнениях, именно вам достаётся право решать, где проходит эта черта."
+            };
+
+            public readonly static Archetype Criminal = new Archetype()
+            {
+                ArchetypeId = 15,
+                Name = "Преступник",
+                MinStatusValue = 0,
+                MaxStatusValue = 4,
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Social.Trading,
+                    Stat.Social.Intimidation,
+                    Stat.Applied.Lockpiking,
+                    Stat.Common.Fighting,
+                    Stat.Common.Vigilance,
+                    Stat.Common.Watching,
+                    Stat.Common.SelfDisguise,
+                    Stat.Social.CrimeSpeaking,
+                    Stat.GetOneOf(
+                        Stat.Social.Any,
+                        Stat.Applied.Any
+                        )
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Живущие по ту сторону закона прекрасно осведомлены о тайном мире подлости, отчаяния и предательства, который находится вне поля зрения законопослушных граждан. Некоторые преступники сформировали собственные понятия чести и ведут дела по своим правилам, чтобы огородиться от осознания того, что даже самый строгий порядок цивилизации может рухнуть под гнётом корысти и своеволия отдельных людей. Другие же упиваются этим открытием."
+            };
+
+            public readonly static Archetype Professor = new Archetype()
+            {
+                ArchetypeId = 16,
+                Name = "Профессор",
+                MinStatusValue = 3,
+                MaxStatusValue = 5,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Social.Bureaucracy,
+                    Stat.Scientific.Reading,
+                    Stat.Social.Any,
+                    Stat.GetOneOf(
+                        Stat.Scientific.Any,
+                        Stat.Applied.Chemistry,
+                        Stat.Applied.Astronomy
+                        ),
+                    Stat.GetOneOf(
+                        Stat.Scientific.Any,
+                        Stat.Applied.Chemistry,
+                        Stat.Applied.Astronomy
+                        ),
+                    Stat.GetOneOf(
+                        Stat.Scientific.Any,
+                        Stat.Applied.Chemistry,
+                        Stat.Applied.Astronomy
+                        )
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Вы можете быть спокойным одиночкой, любящим осмыслять мудрость тысячелетий среди колечек дыма из вашей трубки. А можете — наивным ребёнком в теле взрослого, неумелым во всём, кроме средневерхненемецкого языка, из-за владения которым вы важничаете и задираете нос. Вы можете быть вторым, но считать себя первым, тем самым доставляя несказанную радость всем вокруг."
+            };
+
+            public readonly static Archetype Psychiatrist = new Archetype()
+            {
+                ArchetypeId = 17,
+                Name = "Психиатр",
+                MinStatusValue = 3,
+                MaxStatusValue = 4,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Scientific.Biology,
+                    Stat.Scientific.ForeignLanguages,
+                    Stat.Scientific.Reading,
+                    Stat.Scientific.Medicine,
+                    Stat.Applied.Pharm,
+                    Stat.Common.Psychoanalysis,
+                    Stat.Social.Insight,
+                    Stat.Social.Any,
+                    Stat.Social.Any,
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Вы специалист по болезням души. Быть может, вас обучали психоанализу в Вене, вы занимаетесь неврологией и функциями мозга человека, либо же вы простой врач, интересующийся науками о человеческом поведении. Несмотря на то, что в последнее время среди психиатров всё больше последователей набирает учение Фрейда, пока что ему далеко до всеобщего признания."
+            };
+
+            public readonly static Archetype Priest = new Archetype()
+            {
+                ArchetypeId = 18,
+                Name = "Священник",
+                MinStatusValue = 2,
+                MaxStatusValue = 5,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Scientific.History,
+                    Stat.Scientific.ForeignLanguages,
+                    Stat.Scientific.Reading,
+                    Stat.Common.Psychoanalysis,
+                    Stat.Social.Insight,
+                    Stat.Social.Calming,
+                    Stat.Scientific.Teology,
+                    Stat.Social.Any,
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Будь то странствующий проповедник, приходской пастор, учёный раввин или ярый миссионер, каждому священнику ежедневно приходится сталкиваться с испытаниями, которым Господь подвергает тех, кто внемлет голосу свыше. Быть может, вы и склонны к вере в сверхъестественное, но эта же вера делает вас особенно уязвимым к нечестивым откровениям Мифов."
+            };
+
+            public readonly static Archetype Scientist = new Archetype()
+            {
+                ArchetypeId = 19,
+                Name = "Ученый",
+                MinStatusValue = 3,
+                MaxStatusValue = 5,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Common.Electrical,
+                    Stat.Applied.EvidenceCollection,
+                    Stat.Scientific.ForeignLanguages,
+                    Stat.Scientific.Reading,
+                    Stat.Applied.Photography,
+                    Stat.GetOneOf(
+                        Stat.Applied.Astronomy,
+                        Stat.Scientific.Biology,
+                        Stat.Applied.Chemistry,
+                        Stat.Scientific.Cryptography,
+                        Stat.Applied.Forensics,
+                        Stat.Scientific.Geology,
+                        Stat.Scientific.Phisics
+                        ),
+                    Stat.GetOneOf(
+                        Stat.Applied.Astronomy,
+                        Stat.Scientific.Biology,
+                        Stat.Applied.Chemistry,
+                        Stat.Scientific.Cryptography,
+                        Stat.Applied.Forensics,
+                        Stat.Scientific.Geology,
+                        Stat.Scientific.Phisics
+                        )
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Вы работаете во имя продвижения науки, быть может, с целью изменить мир или ради познания какой-то неуловимой истины. Вы считаете себя умелым практиком, и в лаборатории вы, как рыба в воде, а тот пожар мог произойти у кого угодно. Вам просто нужно больше снаряжения, больше времени, больше образцов, больше понимающих коллег. Те глупцы посмеялись над вами в университете. Ничего, вы им ещё покажете."
+            };
+
+            public readonly static Archetype Paramedic = new Archetype()
+            {
+                ArchetypeId = 20,
+                Name = "Фельдшер/медсестра",
+                MinStatusValue = 2,
+                MaxStatusValue = 4,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Scientific.Biology,
+                    Stat.Common.FirstAid,
+                    Stat.Scientific.Medicine,
+                    Stat.Applied.Pharm,
+                    Stat.Social.Insight,
+                    Stat.Social.Calming,
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Фельдшеры и медсёстры — это медики, специально обученные оказывать первую помощь и работать ассистентами при сложных операциях. Они обычно менее образованны, меньше получают и более склонны к состраданию, нежели доктора медицины."
+            };
+
+            public readonly static Archetype Artist = new Archetype()
+            {
+                ArchetypeId = 21,
+                Name = "Художник",
+                MinStatusValue = 1,
+                MaxStatusValue = 4,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Scientific.Architecture,
+                    Stat.Applied.Art,
+                    Stat.Scientific.ArtsHistory,
+                    Stat.Applied.Craft,
+                    Stat.Common.ItemDisguise,
+                    Stat.Social.Charm,
+                    Stat.Applied.Photography,
+                    Stat.Social.Insight,
+                    Stat.GetOneOf(
+                        Stat.Scientific.Any,
+                        Stat.Social.Any
+                        ),
+                    Stat.GetOneOf(
+                        Stat.Scientific.Any,
+                        Stat.Social.Any
+                        )
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Живописец ли вы, музыкант, скульптор, архитектор или даже актёр, вы следуете за вашей музой, куда бы она вас ни повела. Все знают, что вы чувственная и темпераментная личность, обитающая в никому не понятном мире, и, возможно, это даже правда."
+            };
+
+            public readonly static Archetype PrivateInvestigator  = new Archetype()
+            {
+                ArchetypeId = 22,
+                Name = "Частный сыщик",
+                MinStatusValue = 2,
+                MaxStatusValue = 3,
+
+                ProfessionalStats = new List<Stat>()
+                {
+                    Stat.Scientific.Bookkeeping,
+                    Stat.Common.ItemDisguise,
+                    Stat.Common.Driving,
+                    Stat.Scientific.Juridical,
+                    Stat.Applied.Lockpiking,
+                    Stat.Applied.Photography,
+                    Stat.Social.Insight,
+                    Stat.Social.Calming,
+                    Stat.Common.Fighting,
+                    Stat.Common.Watching,
+
+                }.ToImmutableDictionary(s => s.StatId, s => s),
+                Description = "Есть вещи, которые не под силу копам, а также вещи, за которые они не возьмутся, а вы возьмётесь только за деньги. Иногда вы влипаете в дело, в котором копы вам совсем не рады, но вам нужно довести его до конца. Зачем? Вот это уже настоящая загадка, не правда ли?"
             };
         }
     }
