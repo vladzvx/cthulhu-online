@@ -29,10 +29,10 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             MaxValue = 0;
             CurrentValue = 0;
             IsProfessional = isProfessional;
-            StatId = stat.StatId;
-            Type = stat.Type;
-            RestoringSpec = stat.RestoringSpec;
-            Name = stat.Name;
+            //StatId = stat.StatId;
+            //Type = stat.Type;
+            //RestoringSpec = stat.RestoringSpec;
+            //Name = stat.Name;
         }
     }
 }

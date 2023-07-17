@@ -7,13 +7,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         public static class Common
         {
             #region Privates
-            private readonly static Stat _anyCommon = new Stat()
-            {
-                Name = "Любая общая способность",
-                StatId = 70,
-                RestoringSpec = StatRestoringSpec.Unspec,
-                Type = StatType.Unspec,
-            };
 
             private readonly static Stat _sanity = new Stat()
             {
@@ -22,7 +15,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Never,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _health = new Stat()
             {
                 Name = "Здоровье",
@@ -30,7 +22,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _composure = new Stat()
             {
                 Name = "Самообладание",
@@ -38,7 +29,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _athletics = new Stat()
             {
                 Name = "Атлетика",
@@ -46,7 +36,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _vigilance = new Stat()
             {
                 Name = "Бдительность",
@@ -54,7 +43,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _running = new Stat()
             {
                 Name = "Бегство",
@@ -62,7 +50,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _riding = new Stat()
             {
                 Name = "Верховая езда",
@@ -70,7 +57,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _mining = new Stat()
             {
                 Name = "Взрывотехника",
@@ -78,7 +64,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _driving = new Stat()
             {
                 Name = "Вождение",
@@ -86,7 +71,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _stealing = new Stat()
             {
                 Name = "Воровство",
@@ -94,7 +78,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _hipnosis = new Stat()
             {
                 Name = "Гипноз",
@@ -102,7 +85,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _fighting = new Stat()
             {
                 Name = "Драка",
@@ -110,7 +92,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _itemDisguise = new Stat()
             {
                 Name = "Маскировка",
@@ -118,7 +99,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _mechanics = new Stat()
             {
                 Name = "Механика",
@@ -126,7 +106,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _firstAid = new Stat()
             {
                 Name = "Первая помощь",
@@ -134,7 +113,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _extrimDriving = new Stat()
             {
                 Name = "Пилотирование",
@@ -142,7 +120,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _foresight = new Stat()
             {
                 Name = "Предусмотрительность",
@@ -150,7 +127,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _acting = new Stat()
             {
                 Name = "Притворство",
@@ -158,7 +134,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _psychoanalysis = new Stat()
             {
                 Name = "Психоанализ",
@@ -166,7 +141,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _selfDisguise = new Stat()
             {
                 Name = "Скрытность",
@@ -174,7 +148,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _watching = new Stat()
             {
                 Name = "Слежка",
@@ -182,7 +155,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _shooting = new Stat()
             {
                 Name = "Стрельба",
@@ -190,7 +162,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _fencing = new Stat()
             {
                 Name = "Фехтование",
@@ -198,7 +169,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _electrical = new Stat()
             {
                 Name = "Электротехника",
@@ -206,7 +176,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.Nightly,
                 Type = StatType.Common,
             };
-
             private readonly static Stat _magic = new Stat()
             {
                 Name = "Магия",
@@ -215,6 +184,41 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Common,
             };
 
+            private readonly static Stat _anyCommon = new Stat()
+            {
+                Name = "Любая общая способность",
+                StatId = -2,
+                RestoringSpec = StatRestoringSpec.Unspec,
+                Type = StatType.Unspec,
+                OneOf = new System.Collections.Generic.HashSet<Stat>()
+                {
+                    _sanity,
+                    _health,
+                    _composure,
+                    _athletics,
+                    _vigilance,
+                    _running,
+                    _riding,
+                    _mining,
+                    _driving,
+                    _stealing,
+                    _hipnosis,
+                    _fighting,
+                    _itemDisguise,
+                    _mechanics,
+                    _firstAid,
+                    _extrimDriving,
+                    _foresight,
+                    _acting,
+                    _psychoanalysis,
+                    _selfDisguise,
+                    _watching,
+                    _shooting,
+                    _fencing,
+                    _electrical,
+                    _magic,
+                }
+            };
             #endregion
 
             #region Public
@@ -222,7 +226,7 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
             /// <summary>
             /// Любая общая способность
             /// </summary>
-            public static Stat AnyCommon => _anyCommon;
+            public static Stat Any => _anyCommon;
             /// <summary>
             /// Рассудок
             /// </summary>

@@ -7,8 +7,8 @@ namespace Cthulhu.DataGenerator
     {
         public static Archetype Policeman => new Archetype()
         {
-            ArchetypeId = 1,
-            Name = "Полицеский"
+            //ArchetypeId = 1,
+            //Name = "Полицеский"
         };
 
         public static InvestigatorTablet GetInvestigatorTablet(long archetypeId)

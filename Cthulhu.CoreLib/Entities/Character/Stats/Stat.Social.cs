@@ -7,14 +7,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         public static class Social
         {
             #region Private
-            private readonly static Stat _any = new Stat()
-            {
-                Name = "Любая межличностная способность",
-                StatId = 69,
-                RestoringSpec = StatRestoringSpec.Unspec,
-                Type = StatType.Social,
-            };
-
             private readonly static Stat _bureaucracy = new Stat()
             {
                 Name = "Бюрократия",
@@ -103,6 +95,27 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Type = StatType.Social,
             };
 
+            private readonly static Stat _any = new Stat()
+            {
+                Name = "Любая межличностная способность",
+                StatId = -4,
+                RestoringSpec = StatRestoringSpec.Unspec,
+                Type = StatType.Social,
+                OneOf = new System.Collections.Generic.HashSet<Stat>()
+                {
+                    _bureaucracy,
+                    _interrogation,
+                    _intimidation,
+                    _talking,
+                    _charm,
+                    _policeSpeaking,
+                    _insight,
+                    _status,
+                    _trading,
+                    _crimeSpeaking,
+                    _calming,
+                }
+            };
             #endregion
 
             #region Public

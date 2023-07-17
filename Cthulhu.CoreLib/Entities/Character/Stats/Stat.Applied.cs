@@ -7,37 +7,41 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         private readonly static Stat _any = new Stat()
         {
             Name = "Любая способность",
-            StatId = 64,
+            StatId = 0,
             RestoringSpec = StatRestoringSpec.Unspec,
             Type = StatType.Unspec,
+            OneOf = new System.Collections.Generic.HashSet<Stat>()
+            {
+                Common.Any,
+                Scientific.Any,
+                Social.Any,
+                Applied.Any
+            }
         };
 
         private readonly static Stat _anyInvestigate = new Stat()
         {
             Name = "Любая исследовательская",
-            StatId = 66,
+            StatId = -1,
             RestoringSpec = StatRestoringSpec.Unspec,
             Type = StatType.Unspec,
+            OneOf = new System.Collections.Generic.HashSet<Stat>()
+            {
+                Scientific.Any,
+                Social.Any,
+                Applied.Any
+            }
         };
 
 
         public static Stat Any => _any;
         public static Stat AnyInvestigate => _anyInvestigate;
 
-
         /// <summary>
         /// Прикладные способности
         /// </summary>
         public static class Applied
         {
-            private readonly static Stat _any = new Stat()
-            {
-                Name = "Любая прикладная способность",
-                StatId = 67,
-                RestoringSpec = StatRestoringSpec.BetweenGames,
-                Type = StatType.Applied,
-            };
-
             private readonly static Stat _astronomy = new Stat()
             {
                 Name = "Астрономия",
@@ -45,7 +49,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _lockpiking = new Stat()
             {
                 Name = "Взлом",
@@ -53,7 +56,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _trapping = new Stat()
             {
                 Name = "Естествознание",
@@ -61,7 +63,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _craft = new Stat()
             {
                 Name = "Ремесло",
@@ -69,7 +70,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _art = new Stat()
             {
                 Name = "Искусство",
@@ -77,7 +77,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _evidenceCollection = new Stat()
             {
                 Name = "Сбор улик",
@@ -85,7 +84,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _forensics = new Stat()
             {
                 Name = "Судмедэкспертиза",
@@ -93,7 +91,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _pharm = new Stat()
             {
                 Name = "Фармацевтика",
@@ -101,7 +98,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _photography = new Stat()
             {
                 Name = "Фотография",
@@ -109,7 +105,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-
             private readonly static Stat _chemistry = new Stat()
             {
                 Name = "Химия",
@@ -117,7 +112,28 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Applied,
             };
-            
+
+            private readonly static Stat _any = new Stat()
+            {
+                Name = "Любая прикладная способность",
+                StatId = -5,
+                RestoringSpec = StatRestoringSpec.BetweenGames,
+                Type = StatType.Applied,
+                OneOf = new System.Collections.Generic.HashSet<Stat>()
+                {
+                    _astronomy,
+                    _lockpiking,
+                    _trapping,
+                    _craft,
+                    _art,
+                    _evidenceCollection,
+                    _forensics,
+                    _pharm,
+                    _photography,
+                    _chemistry
+                }
+            };
+
             /// <summary>
             /// Любая прикладная способность
             /// </summary>

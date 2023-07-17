@@ -7,14 +7,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         public static class Scientific
         {
             #region Private
-            private readonly static Stat _any = new Stat()
-            {
-                Name = "Любая научная способность",
-                StatId = 68,
-                RestoringSpec = StatRestoringSpec.Unspec,
-                Type = StatType.Scientific,
-            };
-
             private readonly static Stat _anthropology = new Stat()
             {
                 Name = "Антропология",
@@ -22,7 +14,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _archaeology = new Stat()
             {
                 Name = "Археология",
@@ -30,7 +21,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _architecture = new Stat()
             {
                 Name = "Архитектура",
@@ -38,7 +28,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _biology = new Stat()
             {
                 Name = "Биология",
@@ -46,7 +35,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _bookkeeping = new Stat()
             {
                 Name = "Бухгалтерское дело",
@@ -54,7 +42,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _geology = new Stat()
             {
                 Name = "Геология",
@@ -62,7 +49,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _history = new Stat()
             {
                 Name = "История",
@@ -70,7 +56,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _artsHistory = new Stat()
             {
                 Name = "История искусств",
@@ -78,7 +63,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _reading = new Stat()
             {
                 Name = "Книжные изыскания",
@@ -86,7 +70,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _cryptography = new Stat()
             {
                 Name = "Криптография",
@@ -94,7 +77,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _medicine = new Stat()
             {
                 Name = "Медицина",
@@ -102,7 +84,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _cthulhuMyth = new Stat()
             {
                 Name = "Мифология Ктулху",
@@ -110,7 +91,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _occultysm = new Stat()
             {
                 Name = "Оккультизм",
@@ -118,7 +98,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _teology = new Stat()
             {
                 Name = "Теология",
@@ -126,7 +105,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _phisics = new Stat()
             {
                 Name = "Физика",
@@ -134,7 +112,6 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _juridical = new Stat()
             {
                 Name = "Юриспруденция",
@@ -142,13 +119,40 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
             };
-
             private readonly static Stat _foreignLanguages = new Stat()
             {
                 Name = "Языки",
                 StatId = 42,
                 RestoringSpec = StatRestoringSpec.BetweenGames,
                 Type = StatType.Scientific,
+            };
+
+            private readonly static Stat _any = new Stat()
+            {
+                Name = "Любая научная способность",
+                StatId = -3,
+                RestoringSpec = StatRestoringSpec.Unspec,
+                Type = StatType.Scientific,
+                OneOf = new System.Collections.Generic.HashSet<Stat>()
+                {
+                    _anthropology,
+                    _archaeology,
+                    _architecture,
+                    _biology,
+                    _bookkeeping,
+                    _geology,
+                    _history,
+                    _artsHistory,
+                    _reading,
+                    _cryptography,
+                    _medicine,
+                    _cthulhuMyth,
+                    _occultysm,
+                    _teology,
+                    _phisics,
+                    _juridical,
+                    _foreignLanguages
+                }
             };
             #endregion
 

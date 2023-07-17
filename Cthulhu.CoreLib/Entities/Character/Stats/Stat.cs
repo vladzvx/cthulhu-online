@@ -13,8 +13,15 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
         public HashSet<Stat>? OneOf { get; private set; }
 
         #region Static
-        public readonly static ImmutableList<Stat> Stats = CreateStatsArray();
-        public readonly static ImmutableDictionary<long,Stat> EmptyDict = new Dictionary<long,Stat>().ToImmutableDictionary();
+        public readonly static ImmutableList<Stat> Stats = CreateStatsArray(true,true, true, true, true, true);
+        public readonly static ImmutableDictionary<long, Stat> CommonStats = CreateStatsArray(false, false, true, false, false, false).ToImmutableDictionary(cs => cs.StatId);
+        public readonly static ImmutableDictionary<long, Stat> InvestigateStats = CreateStatsArray(false,false, false, true, true, true).ToImmutableDictionary(cs => cs.StatId);
+        public readonly static ImmutableList<Stat> ScientificStats = CreateStatsArray(false,false, false, true, false, false);
+        public readonly static ImmutableList<Stat> SocialStats = CreateStatsArray(false,false, false, false, true, false);
+        public readonly static ImmutableList<Stat> AppliedStats = CreateStatsArray(false,false, false, false, false, true);
+
+
+        public readonly static ImmutableDictionary<long, Stat> EmptyDict = new Dictionary<long, Stat>().ToImmutableDictionary();
         public static Stat GetOneOf(params Stat[] stats)
         {
             return new Stat()
@@ -22,20 +29,23 @@ namespace Cthulhu.CoreLib.Entities.Character.Stats
                 Name = "Одна из",
                 OneOf = new HashSet<Stat>(stats),
                 RestoringSpec = StatRestoringSpec.Unspec,
-                StatId = 0,
+                StatId = -10,
                 Type = StatType.OneOf
             };
         }
-        private static ImmutableList<Stat> CreateStatsArray()
+        private static ImmutableList<Stat> CreateStatsArray(bool any,bool anyInvestigate, bool common,bool scientific, bool social, bool applied)
         {
             var result = new List<Stat>();
-            ReadStats(typeof(Stat), result);
-            ReadStats(typeof(Stat.Common), result);
-            ReadStats(typeof(Stat.Scientific), result);
-            ReadStats(typeof(Stat.Social), result);
-            ReadStats(typeof(Stat.Applied), result);
+            if (any) result.Add(Stat.Any);
+            if (anyInvestigate) result.Add(Stat.AnyInvestigate);
+            if (common) ReadStats(typeof(Stat.Common), result);
+            if (scientific) ReadStats(typeof(Stat.Scientific), result);
+            if (social) ReadStats(typeof(Stat.Social), result);
+            if (applied) ReadStats(typeof(Stat.Applied), result);
+            //result.RemoveAll(s => s.StatId <= 0);
             return result.ToImmutableList();
         }
+
         private static void ReadStats(Type type, List<Stat> forResult)
         {
             if (type==null) return;

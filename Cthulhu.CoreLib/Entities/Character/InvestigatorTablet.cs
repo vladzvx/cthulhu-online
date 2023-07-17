@@ -13,17 +13,175 @@ namespace Cthulhu.CoreLib.Entities.Character
 {
     public class InvestigatorTablet
     {
+        #region view
+
+        public string Name { get; private set; } = string.Empty;
+        public string Description { get; private set; } = string.Empty;
+        public DateTime BirthDate { get; private set; }
+
+        public double Sanity => Ranks[Stat.Common.Sanity.StatId];
+        public double HealthValue => Values[Stat.Common.Health.StatId];
+        public double HealthRank=> Ranks[Stat.Common.Health.StatId];
+        public double ComposureValue => Values[Stat.Common.Composure.StatId];
+        public double ComposureRank => Ranks[Stat.Common.Composure.StatId];
+
+        public double Defence { get; set; } = 4;
+        public double Armor { get; set; } = 0;
+        #endregion
         #region Общая информация 
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public DateTime BirthDate { get; set; }
-        public PersonRole PersonRole { get; set; }
-        public PersonSpices PersonSpices { get; set; }
+
+
+
+
+
+        private readonly object _lock = new object();
+        private TabletStatus _status;
+        public TabletStatus Status
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    return _status;
+                }
+            }
+            private set
+            {
+                lock (_lock)
+                {
+                    _status = value;
+                }
+            }
+        }
+        public double CommonStatsTotal { get; set; } = 65;
+        public double InvestigationStatsTotal { get; set; } = 18;
+        public double CommonStatsUsed { get; set; }
+        public double InvestigationStatsUsed { get; set; }
+
 
         /// <summary>
         /// Архетип (хобо, дилетант и т.д.)
         /// </summary>
-        public Archetype Archetype { get; set; } = Archetype.Instances.Vagabond;
+        public Archetype Archetype { get; private set; } = Archetype.Instances.Vagabond;
+        public ConcurrentDictionary<long, double> Ranks { get; private set; } = new ConcurrentDictionary<long, double>();
+        public ConcurrentDictionary<long, double> Values { get; private set; } = new ConcurrentDictionary<long, double>();
+        public ConcurrentDictionary<long, double?> Professionals { get; private set; } = new ConcurrentDictionary<long, double?>();
+
+        private ConcurrentBag<Stat> UnselectedProfessionals = new ConcurrentBag<Stat>();
+
+        public InvestigatorTablet(Archetype archetype, string name)
+        {
+            Name = name;
+            Status = TabletStatus.Created;
+            foreach (var kvp in archetype.ProfessionalStats)
+            {
+                if (kvp.Value.StatId > 0)
+                {
+                    Professionals.TryAdd(kvp.Key, null);
+                }
+                else
+                {
+                    UnselectedProfessionals.Add(kvp.Value);
+                }
+            }
+            foreach (var st in Stat.CommonStats)
+            {
+                Ranks[st.Key] = 0;
+                Values[st.Key] = 0;
+            }
+            foreach (var st in Stat.InvestigateStats)
+            {
+                Ranks[st.Key] = 0;
+                Values[st.Key] = 0;
+            }
+
+            Ranks[Stat.Common.Sanity.StatId] = 10;
+            CommonStatsUsed += 10;
+            Ranks[Stat.Common.Health.StatId] = 12;
+            CommonStatsUsed += 12;
+            Ranks[Stat.Common.Composure.StatId] = 12;
+            CommonStatsUsed += 12;
+        }
+
+        public bool TryGetProfessionalsForSelection(out Stat[] result)
+        {
+            result = Array.Empty<Stat>();
+            if (UnselectedProfessionals.TryTake(out var st))
+            {
+                var res = new List<Stat>();
+                UnwrapStatsForSelection(st, res);
+                return res.Count > 0;
+            }
+            return false;
+        }
+
+        public void SetProfessional(long statId)
+        {
+            if (!Professionals.ContainsKey(statId))
+            {
+                Professionals[statId] = 0;
+                Ranks[statId] = Ranks[statId] * 2;
+            }
+        }
+
+        public void RemoveProfessional(long statId)
+        {
+            if (Professionals.ContainsKey(statId))
+            {
+                Professionals.TryRemove(statId, out _);
+                Ranks[statId] = Ranks[statId] / 2;
+            }
+        }
+
+        public void DistributeValue(long statId, double value =1)
+        {
+            var mult = Professionals.ContainsKey(statId) ? 2 : 1;
+            if (Stat.CommonStats.ContainsKey(statId) && CommonStatsTotal- CommonStatsUsed>=value)
+            {
+                Ranks[statId] = Ranks[statId] + mult * value;
+                CommonStatsUsed += value;
+            }
+            else if (Stat.InvestigateStats.ContainsKey(statId) && InvestigationStatsTotal-InvestigationStatsUsed>=value)
+            {
+                Ranks[statId] = Ranks[statId] + mult * value;
+                InvestigationStatsUsed += value;
+            }
+        }
+
+        public void UndistributeValue(long statId, double value = 1)
+        {
+            if (Ranks[statId]<value) value = Ranks[statId];
+            var mult = Professionals.ContainsKey(statId) ? 2 : 1;
+            if (Stat.CommonStats.ContainsKey(statId) && CommonStatsUsed > 0)
+            {
+                Ranks[statId] = Ranks[statId] - value;
+                CommonStatsUsed -= value / mult;
+            }
+            else if (Stat.InvestigateStats.ContainsKey(statId) && InvestigationStatsUsed > 0)
+            {
+                Ranks[statId] = Ranks[statId] - value;
+                InvestigationStatsUsed -= value / mult;
+            }
+        }
+
+        public static void UnwrapStatsForSelection(Stat stat, List<Stat> forResult)
+        {
+            if (stat.StatId<=0 && stat.OneOf!=null && stat.OneOf.Count>0)
+            {
+                var forContinue = stat.OneOf.Where(o => o.StatId <= 0);
+                forResult.AddRange(stat.OneOf.Where(o => o.StatId > 0));
+                foreach (var fc in forContinue)
+                {
+                    UnwrapStatsForSelection(fc, forResult);
+                }
+            }
+            return;
+        }
+
+        public PersonRole PersonRole { get; set; }
+        public PersonSpices PersonSpices { get; set; }
+
+
 
         /// <summary>
         /// Мотив (любоптство и т.д.)
@@ -43,20 +201,6 @@ namespace Cthulhu.CoreLib.Entities.Character
         #endregion
 
         #region Характеристики сыщика
-        public double CommonStatsTotal { get; set; }
-        public double InvestigationStatsTotal { get; set; }
-        public double CommonStatsUsed { get; set; }
-        public double InvestigationStatsUsed { get; set; }
-        public double Defence { get; set; } = 4;
-        public double Armor { get; set; } = 0;
-
-        public StatValue Sanity => CommonStats[Stat.Common.Sanity.StatId];
-        public StatValue Health => CommonStats[Stat.Common.Health.StatId];
-        public StatValue Composure => CommonStats[Stat.Common.Composure.StatId];
-
-        public ConcurrentDictionary<long, StatValue> CommonStats { get; set; } = new ConcurrentDictionary<long, StatValue>();
-        public ConcurrentDictionary<long, StatValue> InvestigationStats { get; set; } = new ConcurrentDictionary<long, StatValue>();
-        public ConcurrentDictionary<long, StatValue> AllStats { get; set; } = new ConcurrentDictionary<long, StatValue>();
         #endregion
 
         #region Имущество сыщика
@@ -64,143 +208,25 @@ namespace Cthulhu.CoreLib.Entities.Character
         #endregion
 
         #region Действия
-        public void DistributeStatValue(long StatId, double value)
+
+        public void AddCommonStatPoints(double value = 1)
         {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                var removingValue = statValue.IsProfessional ? value / 2 : value;
-                if (statValue.Type == StatType.Common)
-                {
-                    if (CommonStatsTotal - CommonStatsUsed >= removingValue)
-                    {
-                        statValue.MaxValue += value;
-                        statValue.CurrentValue += value;
-                        CommonStatsUsed += removingValue;
-                    }
-                }
-                else
-                {
-                    if (InvestigationStatsTotal - InvestigationStatsUsed >= removingValue)
-                    {
-                        statValue.MaxValue += value;
-                        statValue.CurrentValue += value;
-                        InvestigationStatsUsed += removingValue;
-                    }
-                }
-            }
+            CommonStatsTotal+= value;
         }
 
-        public void AddStatPoints(long StatId, double value)
+        public void AddInvestigateStatPoints(double value = 1)
         {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                var addingValue = statValue.IsProfessional ? value * 2 : value;
-                statValue.MaxValue += addingValue;
-                statValue.CurrentValue += addingValue;
-                if (statValue.Type == StatType.Common)
-                {
-                    CommonStatsTotal += value;
-                    CommonStatsUsed += value;
-                }
-                else
-                {
-                    InvestigationStatsTotal += value;
-                    InvestigationStatsUsed += value;
-                }
-            }
+            InvestigationStatsTotal -= value;
         }
 
-        public void RemoveStatPoints(long StatId, double value)
+        public void RemoveCommonStatPoints(double value = 1)
         {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                var addingValue = statValue.IsProfessional ? value * 2 : value;
-                statValue.MaxValue -= addingValue;
-                statValue.CurrentValue -= addingValue;
-                if (statValue.Type == StatType.Common)
-                {
-                    CommonStatsTotal -= value;
-                    CommonStatsUsed -= value;
-                }
-                else
-                {
-                    InvestigationStatsTotal -= value;
-                    InvestigationStatsUsed -= value;
-                }
-            }
+            CommonStatsTotal -= value;
         }
 
-        public void FreeValuePoint(long StatId, double value = 1)
+        public void RemoveInvestigateStatPoints(double value = 1)
         {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                var removingValue = statValue.IsProfessional ? value * 2 : value;
-                statValue.MaxValue -= removingValue;
-                statValue.CurrentValue -= removingValue;
-                CommonStatsUsed -= value;
-            }
-        }
-
-        public void SetSkillProfessional(long StatId)
-        {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                if (!statValue.IsProfessional)
-                {
-                    statValue.IsProfessional = true;
-                    statValue.MaxValue *= 2;
-                    statValue.CurrentValue *= 2;
-                }
-            }
-        }
-
-        public void CancellSkillProfessional(long StatId)
-        {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                if (statValue.IsProfessional)
-                {
-                    statValue.IsProfessional = false;
-                    statValue.MaxValue = Math.Round(statValue.MaxValue / 2);
-                    statValue.CurrentValue = Math.Round(statValue.CurrentValue / 2);
-                }
-            }
-        }
-
-        public void Restore(RestorationMod restorationMod)
-        {
-            var stats = AllStats.Values.Where(s => s.RestoringSpec == StatRestoringSpec.Nightly);
-            foreach (var stat in stats)
-            {
-                stat.Restore(restorationMod);
-            }
-        }
-
-        public double GetStatPoints(long StatId, double value)
-        {
-            if (AllStats.TryGetValue(StatId, out StatValue statValue))
-            {
-                if (statValue.CurrentValue >= value)
-                {
-                    statValue.CurrentValue -= value;
-                    return value;
-                }
-                else
-                {
-                    value = statValue.CurrentValue;
-                    statValue.CurrentValue = 0;
-                    return value;
-                }
-            }
-            else return 0;
-        }
-
-        private void NormalizeValues()
-        {
-            foreach (var kvp  in AllStats)
-            {
-                kvp.Value.NormalizeValues();
-            }
+            InvestigationStatsTotal -= value;
         }
         #endregion
     }
